@@ -182,8 +182,9 @@
                                             "pending" => "https://jcvels-mp-commerce-php.herokuapp.com/pago_pendiente.php"
                                         );
 
-                                        $preference->auto_return = "all";
+                                        $preference->auto_return = "approved";
                                         $preference->items = array($item);
+                                        $preference->payer = array($payer);
                                         $preference->payment_methods = array(
                                             "excluded_payment_methods" => array( array( "id" => "amex" ) ),
                                             "excluded_payment_types" => array( array( "id" => "atm" ) ),
