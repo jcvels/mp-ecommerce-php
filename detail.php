@@ -141,6 +141,7 @@
 
                                         // Agrega credenciales
                                         MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
+                                        MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 
                                         // Crea un objeto de preferencia
                                         $preference = new MercadoPago\Preference();
@@ -191,8 +192,6 @@
                                         $preference->notification_url = "https://hookb.in/b9gGmll3MlfnW131gPNl";
                                         $preference->external_reference = "jcvels@uvcoding.com.ar";
 
-                                        $mp.set_integrator_id("dev_24c65fb163bf11ea96500242ac130004");
-
                                         $preference->save();
                                     ?>
 
@@ -204,7 +203,7 @@
 
                                     <!-- Pago redirect -->
                                     <form action="<?php echo $preference->init_point; ?>" method="POST">
-                                            <button class="mercadopago-button">Pagar la Compra</button>
+                                        <button class="mercadopago-button">Pagar la Compra</button>
                                     </form>
                                     
                                 </div>
