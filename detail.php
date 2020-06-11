@@ -149,6 +149,7 @@
                                             $item->title = $_POST['title'];
                                             $item->quantity = intval( $_POST['unit'] );
                                             $item->unit_price = floatval( $_POST['price'] );
+                                            $item->picture_url = "https://jcvels-mp-commerce-php.herokuapp.com/assets/u_10168742.jpg";
                                             $item->external_reference = "jcvels@uvcoding.com.ar";
 
                                             //Crear el comprador
@@ -178,15 +179,18 @@
                                                 "pending" => "https://jcvels-mp-commerce-php.herokuapp.com/pago_pendiente.php"
                                             );
                                             $preference->auto_return = "approved";
-
                                             $preference->items = array($item);
                                             $preference->save();
                                         ?>
 
-                                        <script
+                                        <!-- Pago modal -->
+                                        <!script
                                             src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                                             data-preference-id="<?php echo $preference->id; ?>">
-                                        </script>
+                                        </script-->
+
+                                        <!-- Pago redirect -->
+                                        <a href="<?php echo $preference->init_point; ?>">Pagar con Mercado Pago</a>
                                     
                                     </form>
                                     
