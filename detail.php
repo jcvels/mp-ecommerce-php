@@ -173,9 +173,9 @@
                                             );
 
                                             $preference->back_urls = array(
-                                                "success" => "localhost/pago_exitoso.php",
-                                                "failure" => "localhost/pago_rechazado.php",
-                                                "pending" => "localhost/pago_pendiente.php"
+                                                "success" => "https://jcvels-mp-commerce-php.herokuapp.com/pago_exitoso.php",
+                                                "failure" => "https://jcvels-mp-commerce-php.herokuapp.com/pago_rechazado.php",
+                                                "pending" => "https://jcvels-mp-commerce-php.herokuapp.com/pago_pendiente.php"
                                             );
                                             $preference->auto_return = "approved";
 
