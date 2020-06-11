@@ -131,7 +131,7 @@
                                         </h3>
                                     </div>
 
-                                    <form action="/procesar-pago.php" method="POST">
+                                    <form action="#" method="POST">
 
                                         <?php
                                             // SDK de Mercado Pago
@@ -145,19 +145,20 @@
 
                                             // Crea un ítem en la preferencia
                                             $item = new MercadoPago\Item();
-                                            $item->title = "'" . $_POST['title'] . "'" ;
+                                            $item->id = "1234";
+                                            $item->title = $_POST['title'];
                                             $item->quantity = intval( $_POST['unit'] );
                                             $item->unit_price = floatval( $_POST['price'] );
+                                            $item->external_reference = "jcvels@uvcoding.com.ar";
 
                                             //Crear el comprador
                                             $payer = new MercadoPago\Payer();
-                                            $payer->name = "Charles";
-                                            $payer->surname = "Luevano";
-                                            $payer->email = "charles@hotmail.com";
-                                            $payer->date_created = "2018-06-02T12:58:41.425-04:00";
+                                            $payer->name = "Lalo";
+                                            $payer->surname = "Landa";
+                                            $payer->email = "test_user_63274575@testuser.com";
                                             $payer->phone = array(
-                                                "area_code" => "",
-                                                "number" => "949 128 866"
+                                                "area_code" => "11",
+                                                "number" => "22223333"
                                             );
                                             
                                             $payer->identification = array(
@@ -166,10 +167,17 @@
                                             );
                                             
                                             $payer->address = array(
-                                                "street_name" => "Cuesta Miguel Armendáriz",
-                                                "street_number" => 1004,
-                                                "zip_code" => "11020"
+                                                "street_name" => "False",
+                                                "street_number" => "123",
+                                                "zip_code" => "1111"
                                             );
+
+                                            $preference->back_urls = array(
+                                                "success" => "localhost/pago_exitoso.php",
+                                                "failure" => "localhost/pago_rechazado.php",
+                                                "pending" => "localhost/pago_pendiente.php"
+                                            );
+                                            $preference->auto_return = "approved";
 
                                             $preference->items = array($item);
                                             $preference->save();
