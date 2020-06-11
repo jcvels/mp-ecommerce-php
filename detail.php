@@ -138,16 +138,38 @@
                                             require __DIR__ .  '/vendor/autoload.php';
 
                                             // Agrega credenciales
-                                            MercadoPago\SDK::setAccessToken('APP_USR-7621668301728696-092619-b4aba76303cc4df65bf843ee9f279a17-92016816');
+                                            MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
 
                                             // Crea un objeto de preferencia
                                             $preference = new MercadoPago\Preference();
 
                                             // Crea un ítem en la preferencia
                                             $item = new MercadoPago\Item();
-                                            $item->title = $_POST['title'] ;
+                                            $item->title = "'" . $_POST['title'] . "'" ;
                                             $item->quantity = intval( $_POST['unit'] );
                                             $item->unit_price = floatval( $_POST['price'] );
+
+                                            //Crear el comprador
+                                            $payer = new MercadoPago\Payer();
+                                            $payer->name = "Charles";
+                                            $payer->surname = "Luevano";
+                                            $payer->email = "charles@hotmail.com";
+                                            $payer->date_created = "2018-06-02T12:58:41.425-04:00";
+                                            $payer->phone = array(
+                                                "area_code" => "",
+                                                "number" => "949 128 866"
+                                            );
+                                            
+                                            $payer->identification = array(
+                                                "type" => "DNI",
+                                                "number" => "12345678"
+                                            );
+                                            
+                                            $payer->address = array(
+                                                "street_name" => "Cuesta Miguel Armendáriz",
+                                                "street_number" => 1004,
+                                                "zip_code" => "11020"
+                                            );
 
                                             $preference->items = array($item);
                                             $preference->save();
