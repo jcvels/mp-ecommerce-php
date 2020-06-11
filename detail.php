@@ -178,16 +178,16 @@
                                                 "failure" => "https://jcvels-mp-commerce-php.herokuapp.com/pago_rechazado.php",
                                                 "pending" => "https://jcvels-mp-commerce-php.herokuapp.com/pago_pendiente.php"
                                             );
-                                            $preference->auto_return = "approved";
+                                            $preference->auto_return = "all";
                                             $preference->items = array($item);
                                             $preference->save();
                                         ?>
 
                                         <!-- Pago modal -->
-                                        <!script
+                                        <script
                                             src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                                             data-preference-id="<?php echo $preference->id; ?>">
-                                        </script-->
+                                        </script>
 
                                         <!-- Pago redirect -->
                                         <a href="<?php echo $preference->init_point; ?>">Pagar con Mercado Pago</a>
